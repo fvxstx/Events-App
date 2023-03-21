@@ -8,22 +8,19 @@ interface Propss {
   image: string;
 }
 
-const HomePage = (props: any) => {
+const AllEvents = (props: any) => {
   const { data } = props;
+
   return (
-    <div className="homeBody">
+    <div className={"eventsPage"}>
       {data.map((ev: Propss) => (
         <Link className="card" key={ev.id} href={`/events/${ev.id}`} passHref>
-          <Image src={ev.image} alt={""} width={500} height={300} />
-
-          <div className="content">
-            <h2>{ev.title}</h2>
-            <p>{ev.description}</p>
-          </div>
+          <Image src={ev.image} alt={ev.title} width={400} height={400} />
+          <h2>{ev.title}</h2>
         </Link>
       ))}
     </div>
   );
 };
 
-export default HomePage;
+export default AllEvents;

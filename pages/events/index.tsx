@@ -1,32 +1,9 @@
+import AllEvents from "@/src/components/events/eventPage";
 import { GetServerSideProps } from "next";
-import Image from "next/image";
-import Link from "next/link";
-
-interface Propss {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-}
 
 const Events = (props: any) => {
   const { data } = props;
-
-  return (
-    <main>
-      <h1>Event Page</h1>
-      <div>
-        {data.map((ev: Propss) => (
-          <>
-            <Link key={ev.id} href={`/events/${ev.id}`} passHref>
-              <Image src={ev.image} alt={ev.title} width={300} height={300} />
-              <h2>{ev.title}</h2>
-            </Link>
-          </>
-        ))}
-      </div>
-    </main>
-  );
+  return <AllEvents data={data} />;
 };
 
 export default Events;
