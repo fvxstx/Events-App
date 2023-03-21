@@ -1,15 +1,6 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
 import { GetServerSideProps } from "next";
-import Image from "next/image";
-import Link from "next/link";
-
-interface Propss {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-}
+import HomePage from "@/src/components/home/home-page";
 
 export default function Home(props: any) {
   const { data } = props;
@@ -22,28 +13,7 @@ export default function Home(props: any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <nav>
-          <Link href="/events" passHref>
-            Events{" "}
-          </Link>
-          <Link href="/" passHref>
-            Home{" "}
-          </Link>
-          <Link href="aboutUs" passHref>
-            About Us{" "}
-          </Link>
-        </nav>
-      </header>
-      <main className={styles.main}>
-        {data.map((ev: Propss) => (
-          <Link key={ev.id} href={`/events/${ev.id}`} passHref>
-            <Image src={ev.image} alt={""} width={300} height={300} />{" "}
-            <h2>{ev.title}</h2>
-            <p>{ev.description}</p>
-          </Link>
-        ))}
-      </main>
+      <HomePage data={data} />
     </>
   );
 }
